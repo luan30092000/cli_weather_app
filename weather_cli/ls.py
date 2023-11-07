@@ -4,29 +4,40 @@ import argparse
 import datetime
 from pathlib import Path
 
+# Program info
 parser = argparse.ArgumentParser(
     prog="ls",
     description="List the content of a directory",
     epilog="Thanks for using %(prog)s! :)",
+    argument_default=argparse.SUPPRESS,
     )
 
-# parser.add_argument("path")
+# Add first arg (path) to `general` group. parser.add_argument("path")
 general = parser.add_argument_group("general output")
-general.add_argument("path")
-# parser.add_argument_group("general output").add_argument("path")  # a shortcut between the two 
+general.add_argument(
+    "path", 
+    nargs='?', 
+    default='.',
+    help = "take the path to the target directory (default: %(default)s)"
+    )
+# parser.add_argument_group("general output").add_argument("path")  # shortcut for above
 
-# parser.add_argument("-l", "--long", action="store_true")
+# Add second arg (-l) to `detailed` group. parser.add_argument("-l", "--long", action="store_true")
 detailed = parser.add_argument_group("detailed output")
-detailed.add_argument("-l", "--long", action="store_true")
-
+detailed.add_argument(
+    "-l", "--long", 
+    action="store_true",
+    help = "display detailed directory content"
+    )
 
 args = parser.parse_args()
-
 target_dir = Path(args.path)
+print(args)
 
 if not target_dir.exists():
-    print("The target directory doesn't exist")
-    raise SystemExit(1)
+    parser.exit(1, message = "The target directory doesn't exist")
+    
+
 
 def build_output(entry, long=False):
     if long:
@@ -39,4 +50,9 @@ def build_output(entry, long=False):
     return entry.name
 
 for entry in target_dir.iterdir():
-    print(build_output(entry, long=args.long))
+    try:
+        long = args.long
+    except:
+        long = False 
+    print(build_output(entry, long=long))
+

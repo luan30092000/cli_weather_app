@@ -4,7 +4,7 @@ from simple_chalk import chalk
 import requests
 
 # API key for openweathermap
-API_KEY = "f67b12ec4904d1ff7c45001e43f61246"
+API_KEY = "API"
 
 # Base on URL for openweathermap API
 BASE_URL = "https://api.openweathermap.org/data/2.5/weather"
