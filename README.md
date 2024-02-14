@@ -33,3 +33,6 @@ The script will exit and display an error message if:
 ## Code Structure
 Code Structure
 The script is divided into several functions, each with a specific task such as reading user input, building the API request URL, fetching the data, and displaying the results. The main execution of the script is at the bottom, under the if `__name__ == "__main__":` line.
+
+## Demo
+![Weather App Demo](demo/Peek%202024-02-13%2020-45.gif)
