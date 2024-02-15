@@ -1,6 +1,7 @@
 # User Manual for weather.py
 ## Overview
-This Python script fetches and displays weather information for a specific city using OpenWeatherAPI.
+This Python script fetches and displays weather information for a specific city using OpenWeatherAPI.  
+Link to my Notion blog of how to make this project happen: [Notion Blog](https://tailuannguyen.notion.site/Weather-CLI-Application-e23cb4a433fe4afca7413b7c89148fc7?pvs=4)
 ## Requirements
 - Python 3
 - An API key from OpenWeatherMap, which should be stored in a configuration file named "secret.ini" in the following format:
